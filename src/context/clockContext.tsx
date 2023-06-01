@@ -11,11 +11,6 @@ interface Context {
     error: string | null;
     fetchPositionAndTimeData: () => void;
     clockData: ClockData;
-    isMorning: boolean;
-    isAfternoon: boolean;
-    isEvening: boolean;
-    isSun: boolean;
-    isMoon: boolean;
     isLoadingQuote: boolean;
     errorQuote: string | null;
     fetchQuote: () => void;
@@ -32,7 +27,6 @@ interface ReverseGeocodeData {
 }
 
 interface WorldTimeData {
-    datetime: string;
     day_of_week: string;
     day_of_year: string;
     timezone: string;
@@ -42,7 +36,6 @@ interface WorldTimeData {
 interface ClockData {
     city?: string;
     prov?: string;
-    datetime?: string;
     day_of_week?: string;
     day_of_year?: string;
     timezone?: string;
@@ -59,11 +52,6 @@ const initialValue = {
     error: null,
     fetchPositionAndTimeData: () => {},
     clockData: {},
-    isMorning: false,
-    isAfternoon: false,
-    isEvening: false,
-    isSun: false,
-    isMoon: false,
     isLoadingQuote: true,
     errorQuote: null,
     fetchQuote: () => {},
@@ -110,20 +98,14 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
                 throw new Error('Unable to retrieve time data.');
             }
 
-            const {
-                datetime,
-                day_of_week,
-                day_of_year,
-                timezone,
-                week_number,
-            } = worldTimeResponse.data as WorldTimeData;
+            const { day_of_week, day_of_year, timezone, week_number } =
+                worldTimeResponse.data as WorldTimeData;
 
             setClockData((prevClockData: ClockData) => {
                 return {
                     ...prevClockData,
                     city,
                     prov,
-                    datetime,
                     day_of_week,
                     day_of_year,
                     timezone,
@@ -164,40 +146,11 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
         }
     };
 
-    let isSun = false;
-    let isMoon = false;
-    let isMorning = false;
-    let isAfternoon = false;
-    let isEvening = false;
-
-    if (clockData.datetime) {
-        const currentDate = new Date(Date.parse(clockData.datetime as string));
-        // Integer between 0 and 23
-        // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
-        const currentHours = currentDate.getHours();
-        isMorning = currentHours < 12 && currentHours >= 5;
-        isAfternoon = currentHours >= 12 && currentHours < 18;
-        isEvening = currentHours >= 18 || currentHours < 5;
-        isSun = currentHours >= 5 && currentHours < 18;
-        isMoon = currentHours >= 18 || currentHours < 5;
-
-        console.log('Is morning', isMorning);
-        console.log('Is afternoon', isAfternoon);
-        console.log('Is evening', isEvening);
-        console.log('Is sun', isSun);
-        console.log('Is moon', isMoon);
-    }
-
     const contextValue = {
         isLoading,
         error,
         fetchPositionAndTimeData,
         clockData,
-        isMorning,
-        isAfternoon,
-        isEvening,
-        isSun,
-        isMoon,
         isLoadingQuote,
         errorQuote,
         fetchQuote,
