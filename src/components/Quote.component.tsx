@@ -3,7 +3,7 @@ import StyledQuote from './styled/Quote.styled';
 import ClockContext from '../context/clockContext';
 import Spinner from './UI/Spinner.component';
 import AppError from './AppError.component';
-import refreshIcon from '../assets/desktop/icon-refresh.svg';
+import { ReactComponent as RefreshIcon } from '../assets/desktop/icon-refresh.svg';
 
 const Quote = () => {
     const { fetchQuote, isLoadingQuote, errorQuote, quote } =
@@ -24,13 +24,17 @@ const Quote = () => {
     } else {
         content = (
             <>
-                <blockquote className="content">
-                    {quoteContent}
-                    <p className="author">{author}</p>
-                </blockquote>
-                <button onClick={fetchQuote} type="button">
-                    <img src={refreshIcon} alt="refresh" />
-                </button>
+                <div className="quote">
+                    <blockquote>
+                        <div className="quote__content">
+                            &ldquo;{quoteContent}&rdquo;
+                        </div>
+                        <p className="quote__author">{author}</p>
+                    </blockquote>
+                    <button onClick={fetchQuote} type="button">
+                        <RefreshIcon />
+                    </button>
+                </div>
             </>
         );
     }

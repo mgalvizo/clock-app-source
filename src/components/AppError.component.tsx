@@ -9,7 +9,7 @@ interface AppErrorProps {
 const AppError = ({ message }: AppErrorProps) => {
     return (
         <StyledEAppError>
-            <h2>{message}</h2>
+            <h2>&#9888; {message} &#9785;</h2>
         </StyledEAppError>
     );
 };

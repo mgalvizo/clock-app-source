@@ -22,6 +22,7 @@ const StyledSpinner = styled.div<SpinnerProps>`
         css`
             width: ${size}px;
             height: ${size}px;
+            margin: 0 auto;
             border-color: var(--spinner);
             border-top-color: transparent;
             border-width: ${borderWidth}px;

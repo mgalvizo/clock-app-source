@@ -27,6 +27,7 @@ interface ReverseGeocodeData {
 }
 
 interface WorldTimeData {
+    abbreviation: string;
     day_of_week: string;
     day_of_year: string;
     timezone: string;
@@ -80,7 +81,7 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
             const [latitude, longitude] = coords;
 
             const reverseGeocodeResponse = await axios.get(
-                `https://geocode.xyz/${latitude},${longitude}?geoit=json&auth=${process.env.REACT_APP_GEOCODE_KEY}`
+                `https://geocode.xyz/${latitude},${longitude}?geoit=json`
             );
 
             if (reverseGeocodeResponse.status !== 200) {
@@ -98,14 +99,20 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
                 throw new Error('Unable to retrieve time data.');
             }
 
-            const { day_of_week, day_of_year, timezone, week_number } =
-                worldTimeResponse.data as WorldTimeData;
+            const {
+                abbreviation,
+                day_of_week,
+                day_of_year,
+                timezone,
+                week_number,
+            } = worldTimeResponse.data as WorldTimeData;
 
             setClockData((prevClockData: ClockData) => {
                 return {
                     ...prevClockData,
                     city,
                     prov,
+                    abbreviation,
                     day_of_week,
                     day_of_year,
                     timezone,

@@ -61,6 +61,13 @@ const GlobalStyle = createGlobalStyle`
     --button-text-line-height: 1;
     --button-letter-spacing: 5px;
     /* ERROR */
+    --error-message-font-size-sm: 1.5rem;
+    --error-message-letter-spacing-sm:3px;
+    --error-message-font-size-md: 1.8rem;
+    --error-message-letter-spacing-md: 4px;
+    --error-message-font-size-lg: 2.4rem;
+    --error-message-letter-spacing-lg: 5px;
+    --error-message-line-height: 1.5;
     /* SPACING */
     --website-padding-xsm: 4px;
     --website-padding-sm: 8px;
@@ -171,7 +178,7 @@ button {
     }
 
     .component {
-        padding: 0 var(--website-padding-xlg2);
+        padding: 0 calc(var(--website-padding-xlg2) + var(--website-padding-lg));
     }
 }
 
@@ -183,7 +190,7 @@ button {
     }
 
     .component {
-        padding: 0 var(--website-padding-xlg);
+        padding: 0 var(--website-padding-xlg2);
     }
 }
 `;

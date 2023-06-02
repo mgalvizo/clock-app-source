@@ -45,21 +45,37 @@ const App = () => {
     let content;
 
     if (isLoading) {
-        content = <Spinner size={75} borderWidth={10} />;
+        content = (
+            <div className="component">
+                <div className="component__content">
+                    <Spinner size={75} borderWidth={10} />
+                </div>
+            </div>
+        );
     } else if (error) {
-        content = <AppError message={error} />;
+        content = (
+            <div className="component">
+                <div className="component__content">
+                    <AppError message={error} />
+                </div>
+            </div>
+        );
     } else {
         content = (
             <>
-                <Quote />
+                <div className="component">
+                    <div className="component__content">
+                        <Quote />
+                    </div>
+                </div>
                 <span className="time">{time.toLocaleTimeString()}</span>
             </>
         );
     }
 
     // TODO
-    // Style the paddings of the App
-    // Style AppError component
+    // Implement Clock component
+    // Style clock component
 
     return (
         <>

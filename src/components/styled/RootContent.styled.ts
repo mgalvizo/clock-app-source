@@ -15,6 +15,10 @@ const StyledRootContent = styled.div<RootContentProps>`
     align-items: center;
     flex-wrap: wrap;
     overflow-x: hidden;
+    padding-top: var(--website-padding-xlg2);
+    padding-bottom: var(--website-padding-xlg2);
+    background-repeat: no-repeat;
+    background-size: cover;
 
     ${({ isSun }) =>
         isSun &&
@@ -25,8 +29,6 @@ const StyledRootContent = styled.div<RootContentProps>`
                     rgba(0, 0, 0, 0.4) 100%
                 ),
                 url(${mobileDaytimeBg});
-            background-repeat: no-repeat;
-            background-size: auto;
         `}
 
     ${({ isMoon }) =>
@@ -38,12 +40,17 @@ const StyledRootContent = styled.div<RootContentProps>`
                     rgba(0, 0, 0, 0.4) 100%
                 ),
                 url(${mobileNightimeBg});
-            background-repeat: no-repeat;
-            background-size: cover;
         `}
 
     // 620px
     @media only screen and (min-width: 38.75em) {
+        padding-top: calc(
+            var(--website-padding-xlg2) + var(--website-padding-lg)
+        );
+        padding-bottom: calc(
+            var(--website-padding-xlg2) + var(--website-padding-lg)
+        );
+
         ${({ isSun }) =>
             isSun &&
             css`
@@ -69,6 +76,13 @@ const StyledRootContent = styled.div<RootContentProps>`
 
     // 1024px
     @media only screen and (min-width: 64em) {
+        padding-top: calc(
+            var(--website-padding-xlg2) + var(--website-padding-md)
+        );
+        padding-bottom: calc(
+            var(--website-padding-xlg2) + var(--website-padding-md)
+        );
+
         ${({ isSun }) =>
             isSun &&
             css`
