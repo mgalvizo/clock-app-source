@@ -61,8 +61,6 @@ const GlobalStyle = createGlobalStyle`
     --button-text-line-height: 1;
     --button-letter-spacing: 5px;
     /* ERROR */
-    /* SPINNER */
-
     /* SPACING */
     --website-padding-xsm: 4px;
     --website-padding-sm: 8px;

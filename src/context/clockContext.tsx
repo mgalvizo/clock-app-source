@@ -123,8 +123,10 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
         }
     }, []);
 
-    const fetchQuote = async () => {
+    const fetchQuote = useCallback(async () => {
         try {
+            setIsLoadingQuote(true);
+
             const quotableResponse = await axios.get(
                 'https://api.quotable.io/random'
             );
@@ -144,7 +146,7 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
                 setErrorQuote(error.message);
             }
         }
-    };
+    }, []);
 
     const contextValue = {
         isLoading,

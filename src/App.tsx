@@ -1,10 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ClockContext from './context/clockContext';
 import GlobalStyle from './components/styled/GlobalStyles.styled';
+import Spinner from './components/UI/Spinner.component';
 import RootContent from './components/UI/RootContent.component';
+import Quote from './components/Quote.component';
+import AppError from './components/AppError.component';
 
 const App = () => {
-    const { fetchPositionAndTimeData } = useContext(ClockContext);
+    const { fetchPositionAndTimeData, isLoading, error } =
+        useContext(ClockContext);
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
@@ -38,14 +42,31 @@ const App = () => {
     isSun = currentHours >= 5 && currentHours < 18;
     isMoon = currentHours >= 18 || currentHours < 5;
 
-    console.log('isSun', isSun);
-    console.log('isMoon', isMoon);
+    let content;
+
+    if (isLoading) {
+        content = <Spinner size={75} borderWidth={10} />;
+    } else if (error) {
+        content = <AppError message={error} />;
+    } else {
+        content = (
+            <>
+                <Quote />
+                <span className="time">{time.toLocaleTimeString()}</span>
+            </>
+        );
+    }
+
+    // TODO
+    // Style the paddings of the App
+    // Style AppError component
 
     return (
         <>
             <GlobalStyle />
             <RootContent isSun={isSun} isMoon={isMoon}>
-                <span className="time">{time.toLocaleTimeString()}</span>
+                <h1 className="visually-hidden">Clock App</h1>
+                {content}
             </RootContent>
         </>
     );
