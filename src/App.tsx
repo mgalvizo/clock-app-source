@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import ClockContext from './context/clockContext';
 import GlobalStyle from './components/styled/GlobalStyles.styled';
-import Spinner from './components/UI/Spinner.component';
+import RootContent from './components/UI/RootContent.component';
 
 const App = () => {
     const { fetchPositionAndTimeData } = useContext(ClockContext);
@@ -38,12 +38,15 @@ const App = () => {
     isSun = currentHours >= 5 && currentHours < 18;
     isMoon = currentHours >= 18 || currentHours < 5;
 
+    console.log('isSun', isSun);
+    console.log('isMoon', isMoon);
+
     return (
         <>
             <GlobalStyle />
-            <div className="root__content">
+            <RootContent isSun={isSun} isMoon={isMoon}>
                 <span className="time">{time.toLocaleTimeString()}</span>
-            </div>
+            </RootContent>
         </>
     );
 };

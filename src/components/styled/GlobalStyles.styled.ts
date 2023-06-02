@@ -104,7 +104,7 @@ html {
 }
 
 body {
-    background-color: var(--black);
+    background-color: var(--white);
     font-size: var(--body-font-size-sm);
     line-height: var(--body-line-height-sm);
     overflow-x: hidden;
@@ -150,16 +150,6 @@ button {
     clip: rect(1px 1px 1px 1px);
     /* IE6, IE7 */
     clip: rect(1px, 1px, 1px, 1px);
-}
-
-.root__content {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    flex-wrap: wrap;
-    overflow-x: hidden;
 }
 
 .component {
