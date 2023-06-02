@@ -1,54 +1,24 @@
-import React, { ReactNode, createContext, useState, useCallback } from 'react';
+import React, { createContext, useState, useCallback } from 'react';
 import axios from 'axios';
+import {
+    Context,
+    ClockContextProps,
+    ReverseGeocodeData,
+    WorldTimeData,
+    ClockData,
+    Quote,
+} from './interfaces';
 import { Position } from '../interfaces';
 import { geocode, latLng } from '../utils/geolocation';
 
-// TODO
-// hacer el fetch de la quote en una function con usecallback
-
-interface Context {
-    isLoading: boolean;
-    error: string | null;
-    fetchPositionAndTimeData: () => void;
-    clockData: ClockData;
-    isLoadingQuote: boolean;
-    errorQuote: string | null;
-    fetchQuote: () => void;
-    quote: Quote;
-}
-
-interface ClockContextProps {
-    children?: ReactNode;
-}
-
-interface ReverseGeocodeData {
-    city: string;
-    prov: string;
-}
-
-interface WorldTimeData {
-    abbreviation: string;
-    day_of_week: string;
-    day_of_year: string;
-    timezone: string;
-    week_number: string;
-}
-
-interface ClockData {
-    city?: string;
-    prov?: string;
-    day_of_week?: string;
-    day_of_year?: string;
-    timezone?: string;
-    week_number?: string;
-}
-
-interface Quote {
-    author?: string;
-    content?: string;
-}
-
 const initialValue = {
+    refreshClock: () => {},
+    time: new Date(),
+    isSun: false,
+    isMoon: false,
+    isMorning: false,
+    isAfternoon: false,
+    isEvening: false,
     isLoading: true,
     error: null,
     fetchPositionAndTimeData: () => {},
@@ -68,6 +38,26 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
     const [quote, setQuote] = useState<Quote>({});
     const [isLoadingQuote, setIsLoadingQuote] = useState<boolean>(true);
     const [errorQuote, setErrorQuote] = useState<string | null>(null);
+    const [time, setTime] = useState<Date>(new Date());
+
+    const refreshClock = useCallback(() => {
+        setTime(new Date());
+    }, []);
+
+    let isSun = false;
+    let isMoon = false;
+    let isMorning = false;
+    let isAfternoon = false;
+    let isEvening = false;
+
+    // Integer between 0 and 23
+    // 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+    const currentHours = time.getHours();
+    isMorning = currentHours < 12 && currentHours >= 5;
+    isAfternoon = currentHours >= 12 && currentHours < 18;
+    isEvening = currentHours >= 18 || currentHours < 5;
+    isSun = currentHours >= 5 && currentHours < 18;
+    isMoon = currentHours >= 18 || currentHours < 5;
 
     const fetchPositionAndTimeData = useCallback(async () => {
         try {
@@ -156,6 +146,13 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
     }, []);
 
     const contextValue = {
+        refreshClock,
+        time,
+        isSun,
+        isMoon,
+        isMorning,
+        isAfternoon,
+        isEvening,
         isLoading,
         error,
         fetchPositionAndTimeData,

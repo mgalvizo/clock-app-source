@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { RootContentProps } from '../UI/RootContent.component';
 import mobileDaytimeBg from '../../assets/mobile/bg-image-daytime.jpg';
 import mobileNightimeBg from '../../assets/mobile/bg-image-nighttime.jpg';
 import tabletDaytimeBg from '../../assets/tablet/bg-image-daytime.jpg';
@@ -7,7 +6,12 @@ import tabletNightimeBg from '../../assets/tablet/bg-image-nighttime.jpg';
 import desktopDaytimebg from '../../assets/desktop/bg-image-daytime.jpg';
 import desktopNightimeBg from '../../assets/desktop/bg-image-nighttime.jpg';
 
-const StyledRootContent = styled.div<RootContentProps>`
+interface StyledRootContentProps {
+    isSun: boolean;
+    isMoon: boolean;
+}
+
+const StyledRootContent = styled.div<StyledRootContentProps>`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
