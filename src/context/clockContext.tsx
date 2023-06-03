@@ -27,6 +27,8 @@ const initialValue = {
     errorQuote: null,
     fetchQuote: () => {},
     quote: {},
+    isExpanded: false,
+    toggleInfo: () => {},
 };
 
 const ClockContext = createContext<Context>(initialValue);
@@ -39,6 +41,7 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
     const [isLoadingQuote, setIsLoadingQuote] = useState<boolean>(true);
     const [errorQuote, setErrorQuote] = useState<string | null>(null);
     const [time, setTime] = useState<Date>(new Date());
+    const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
     const refreshClock = useCallback(() => {
         setTime(new Date());
@@ -145,6 +148,10 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
         }
     }, []);
 
+    const toggleInfo = useCallback(() => {
+        setIsExpanded(!isExpanded);
+    }, [isExpanded]);
+
     const contextValue = {
         refreshClock,
         time,
@@ -161,6 +168,8 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
         errorQuote,
         fetchQuote,
         quote,
+        isExpanded,
+        toggleInfo,
     };
 
     return (

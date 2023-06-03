@@ -16,6 +16,8 @@ interface Context {
     errorQuote: string | null;
     fetchQuote: () => void;
     quote: Quote;
+    isExpanded: boolean;
+    toggleInfo: () => void;
 }
 
 interface ClockContextProps {
@@ -38,6 +40,7 @@ interface WorldTimeData {
 interface ClockData {
     city?: string;
     prov?: string;
+    abbreviation?: string;
     day_of_week?: string;
     day_of_year?: string;
     timezone?: string;
