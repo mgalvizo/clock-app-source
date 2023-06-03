@@ -8,6 +8,9 @@ const StyledQuote = styled.div`
         justify-content: start;
         align-items: start;
         gap: var(--website-margin-md);
+        animation-name: fadeIn;
+        animation-duration: 0.25s;
+        animation-timing-function: ease-in-out;
     }
 
     .quote__content {

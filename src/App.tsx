@@ -59,8 +59,8 @@ const App = () => {
     }
 
     // TODO
-    // Implement Clock component
-    // Style clock component
+    // Implement Feature List and Feature Item components
+    // Style FeatureList and FeatureItem components
 
     return (
         <>
@@ -74,6 +74,3 @@ const App = () => {
 };
 
 export default App;
-
-// Local State
-// isExpanded, setIsExpanded

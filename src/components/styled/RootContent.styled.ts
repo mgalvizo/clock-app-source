@@ -23,6 +23,9 @@ const StyledRootContent = styled.div<StyledRootContentProps>`
     padding-bottom: var(--website-padding-xlg2);
     background-repeat: no-repeat;
     background-size: cover;
+    animation-name: fadeIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
 
     ${({ isSun }) =>
         isSun &&

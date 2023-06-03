@@ -27,8 +27,6 @@ const Clock = () => {
 
     const { abbreviation, city, prov } = clockData;
 
-    console.log(isExpanded);
-
     return (
         <StyledClock>
             <div className="clock">
@@ -50,22 +48,36 @@ const Clock = () => {
                     </span>
                 </p>
                 <p className="clock__time">
-                    <span className="time__hours">{hours}</span>
-                    <span className="time__colon">:</span>
-                    <span className="time__minutes">{minutes}</span>
-                    <span className="time__timezone">{abbreviation}</span>
+                    <span>
+                        <span className="clock__time__hours">{hours}</span>
+                        <span className="clock__time__colon">:</span>
+                        <span className="clock__time__minutes">{minutes}</span>
+                    </span>
+                    <span className="clock__time__timezone">
+                        {abbreviation}
+                    </span>
                 </p>
                 <p className="clock__location">
                     In <span className="clock__location__city">{city}</span>,{' '}
                     <span className="clock__location__country">{prov}</span>
                 </p>
             </div>
-            <button type="button" onClick={toggleInfo}>
-                {isExpanded ? 'Less' : 'More'}
-                <span className={`arrow ${isExpanded ? 'expanded' : ''}`}>
-                    <ArrowDownIcon />
-                </span>
-            </button>
+            <div className="button__container">
+                <button type="button" onClick={toggleInfo}>
+                    <div>
+                        <span className="button__text">
+                            {isExpanded ? 'Less' : 'More'}
+                        </span>
+                        <span
+                            className={`button__arrow ${
+                                isExpanded ? 'expanded' : ''
+                            }`}
+                        >
+                            <ArrowDownIcon />
+                        </span>
+                    </div>
+                </button>
+            </div>
         </StyledClock>
     );
 };

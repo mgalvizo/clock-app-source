@@ -20,13 +20,13 @@ const GlobalStyle = createGlobalStyle`
     --spinner: #dceef2;
     /* HEADINGS */
     --time-font-size-sm: 10rem;
-    --time-font-size-md: 17.5rem;
+    --time-font-size-md: 15rem;
     --time-font-size-lg: 20rem;
+    --time-letter-spacing: -5px;
     --time-line-height: 1;
     --time-zone-font-size-sm: 1.5rem;
     --time-zone-font-size-md: 3.2rem;
     --time-zone-font-size-lg: 4rem;
-    --time-zone-line-height: 1;
     --greeting-font-size-sm: 1.5rem;
     --greeting-letter-spacing-sm: 3px;
     --greeting-font-size-md: 1.8rem;
@@ -53,16 +53,22 @@ const GlobalStyle = createGlobalStyle`
     --feature-description-font-size-lg: 5.6rem;
     --feature-description-line-height: 1;
     /* BUTTON */
-    --pill-border-radius: 30px;
-    --button-border-radius: 50%;
+    --button-border-radius: 30px;
     --button-text-font-size-sm: 1.2rem;
     --button-text-font-size-md: 1.4rem;
     --button-text-font-size-lg: 1.6rem;
     --button-text-line-height: 1;
     --button-letter-spacing: 5px;
+    --button-width-sm: 116px;
+    --button-width-md: 147px;
+    --button-width-lg: 147px;
+    --circle-size-sm: 32px;
+    --circle-size-md: 40px;
+    --circle-size-lg: 40px;
+    --circle-border-radius: 50%;
     /* ERROR */
     --error-message-font-size-sm: 1.5rem;
-    --error-message-letter-spacing-sm:3px;
+    --error-message-letter-spacing-sm: 3px;
     --error-message-font-size-md: 1.8rem;
     --error-message-letter-spacing-md: 4px;
     --error-message-font-size-lg: 2.4rem;
@@ -121,7 +127,8 @@ main{
     width: 100%;
 }
 
-img {
+img,
+svg {
     width: auto;
     max-width: 100%;
     vertical-align: middle;
@@ -143,6 +150,7 @@ button {
     font-family: inherit;
     color: inherit;
     font-weight: bold;
+    outline: none;
 }
 
 .visually-hidden {
@@ -170,6 +178,27 @@ button {
     }
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes tick {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 // 620px
 @media only screen and (min-width: 38.75em) {
     body {
@@ -178,7 +207,7 @@ button {
     }
 
     .component {
-        padding: 0 calc(var(--website-padding-xlg2) + var(--website-padding-lg));
+        padding: 0 calc(var(--website-padding-sm) + var(--website-padding-xlg2));
     }
 }
 
@@ -190,7 +219,7 @@ button {
     }
 
     .component {
-        padding: 0 var(--website-padding-xlg2);
+        padding: 0 calc(var(--website-padding-lg) + var(--website-padding-xlg2));
     }
 }
 `;
