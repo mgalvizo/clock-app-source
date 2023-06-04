@@ -153,6 +153,10 @@ button {
     outline: none;
 }
 
+.main__content {
+    width: inherit;
+}
+
 .visually-hidden {
     position: absolute;
     width: 1px;

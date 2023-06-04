@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 const StyledQuote = styled.div`
-    .quote {
+    width: inherit;
+
+    .component__content {
         display: grid;
         grid-template-rows: auto;
         grid-template-columns: 1fr auto;

@@ -29,54 +29,68 @@ const Clock = () => {
 
     return (
         <StyledClock>
-            <div className="clock">
-                <p className="clock__greeting">
-                    <span className="clock__greeting__icon">
-                        {isSun && <SunIcon />}
-                        {isMoon && <MoonIcon />}
-                    </span>
-                    <span className="clock__greeting__text">
-                        Good{' '}
-                        {isMorning
-                            ? 'morning'
-                            : isAfternoon
-                            ? 'afternoon'
-                            : isEvening
-                            ? 'evening'
-                            : ''}
-                        <span>, it's currently</span>
-                    </span>
-                </p>
-                <p className="clock__time">
-                    <span>
-                        <span className="clock__time__hours">{hours}</span>
-                        <span className="clock__time__colon">:</span>
-                        <span className="clock__time__minutes">{minutes}</span>
-                    </span>
-                    <span className="clock__time__timezone">
-                        {abbreviation}
-                    </span>
-                </p>
-                <p className="clock__location">
-                    In <span className="clock__location__city">{city}</span>,{' '}
-                    <span className="clock__location__country">{prov}</span>
-                </p>
-            </div>
-            <div className="button__container">
-                <button type="button" onClick={toggleInfo}>
-                    <div>
-                        <span className="button__text">
-                            {isExpanded ? 'Less' : 'More'}
-                        </span>
-                        <span
-                            className={`button__arrow ${
-                                isExpanded ? 'expanded' : ''
-                            }`}
-                        >
-                            <ArrowDownIcon />
-                        </span>
+            <div className="component">
+                <div className="component__content">
+                    <div className="clock__container">
+                        <p className="clock__greeting">
+                            <span className="clock__greeting__icon">
+                                {isSun && <SunIcon />}
+                                {isMoon && <MoonIcon />}
+                            </span>
+                            <span className="clock__greeting__text">
+                                Good{' '}
+                                {isMorning
+                                    ? 'morning'
+                                    : isAfternoon
+                                    ? 'afternoon'
+                                    : isEvening
+                                    ? 'evening'
+                                    : ''}
+                                <span>, it's currently</span>
+                            </span>
+                        </p>
+                        <p className="clock__time">
+                            <span>
+                                <span className="clock__time__hours">
+                                    {hours}
+                                </span>
+                                <span className="clock__time__colon">:</span>
+                                <span className="clock__time__minutes">
+                                    {minutes}
+                                </span>
+                            </span>
+                            <span className="clock__time__timezone">
+                                {abbreviation}
+                            </span>
+                        </p>
+                        <p className="clock__location">
+                            In{' '}
+                            <span className="clock__location__city">
+                                {city}
+                            </span>
+                            ,{' '}
+                            <span className="clock__location__country">
+                                {prov}
+                            </span>
+                        </p>
                     </div>
-                </button>
+                    <div className="button__container">
+                        <button type="button" onClick={toggleInfo}>
+                            <div>
+                                <span className="button__text">
+                                    {isExpanded ? 'Less' : 'More'}
+                                </span>
+                                <span
+                                    className={`button__arrow ${
+                                        isExpanded ? 'expanded' : ''
+                                    }`}
+                                >
+                                    <ArrowDownIcon />
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
             </div>
         </StyledClock>
     );

@@ -5,6 +5,7 @@ import Spinner from './components/UI/Spinner.component';
 import RootContent from './components/UI/RootContent.component';
 import Quote from './components/Quote.component';
 import Clock from './components/Clock.component';
+import Features from './components/Features.component';
 import AppError from './components/AppError.component';
 
 const App = () => {
@@ -26,41 +27,22 @@ const App = () => {
     let content;
 
     if (isLoading) {
-        content = (
-            <div className="component">
-                <div className="component__content">
-                    <Spinner size={75} borderWidth={10} />
-                </div>
-            </div>
-        );
+        content = <Spinner size={75} borderWidth={10} />;
     } else if (error) {
-        content = (
-            <div className="component">
-                <div className="component__content">
-                    <AppError message={error} />
-                </div>
-            </div>
-        );
+        content = <AppError message={error} />;
     } else {
         content = (
-            <>
-                <div className="component">
-                    <div className="component__content">
-                        <Quote />
-                    </div>
-                </div>
-                <div className="component">
-                    <div className="component__content">
-                        <Clock />
-                    </div>
-                </div>
-            </>
+            <div className="main__content">
+                <Quote />
+                <Clock />
+                <Features />
+            </div>
         );
     }
 
     // TODO
-    // Implement Feature List and Feature Item components
-    // Style FeatureList and FeatureItem components
+    // implement layout change when expanding: remove quote component, add feature component
+    // implement layout distribution of items
 
     return (
         <>

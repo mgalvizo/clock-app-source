@@ -9,7 +9,11 @@ interface AppErrorProps {
 const AppError = ({ message }: AppErrorProps) => {
     return (
         <StyledEAppError>
-            <h2>&#9888; {message} &#9785;</h2>
+            <div className="component">
+                <div className="component__content">
+                    <h2>&#9888; {message} &#9785;</h2>
+                </div>
+            </div>
         </StyledEAppError>
     );
 };

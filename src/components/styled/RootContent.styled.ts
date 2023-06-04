@@ -11,7 +11,7 @@ interface StyledRootContentProps {
     isMoon: boolean;
 }
 
-const StyledRootContent = styled.div<StyledRootContentProps>`
+const StyledRootContent = styled.main<StyledRootContentProps>`
     min-height: 100vh;
     display: flex;
     flex-direction: column;

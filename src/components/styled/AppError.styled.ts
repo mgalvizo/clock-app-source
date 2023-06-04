@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 const StyledEAppError = styled.div`
+    width: inherit;
     text-transform: uppercase;
     text-align: center;
+    margin: auto;
 
     h2 {
         font-size: var(--error-message-font-size-sm);

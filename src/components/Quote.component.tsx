@@ -24,16 +24,18 @@ const Quote = () => {
     } else {
         content = (
             <>
-                <div className="quote">
-                    <blockquote>
-                        <div className="quote__content">
-                            &ldquo;{quoteContent}&rdquo;
-                        </div>
-                        <p className="quote__author">{author}</p>
-                    </blockquote>
-                    <button onClick={fetchQuote} type="button">
-                        <RefreshIcon />
-                    </button>
+                <div className="component">
+                    <div className="component__content">
+                        <blockquote>
+                            <div className="quote__content">
+                                &ldquo;{quoteContent}&rdquo;
+                            </div>
+                            <p className="quote__author">{author}</p>
+                        </blockquote>
+                        <button onClick={fetchQuote} type="button">
+                            <RefreshIcon />
+                        </button>
+                    </div>
                 </div>
             </>
         );

@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 const StyledClock = styled.div`
-    display: flex;
-    flex-flow: column wrap;
-    gap: calc(var(--website-margin-sm) + var(--website-margin-xlg2));
+    width: inherit;
+
+    .component__content {
+        display: flex;
+        flex-flow: column wrap;
+        gap: calc(var(--website-margin-sm) + var(--website-margin-xlg2));
+    }
 
     .clock__greeting {
         display: flex;
@@ -114,7 +118,9 @@ const StyledClock = styled.div`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
-        gap: calc(var(--website-margin-xlg2) * 2);
+        .component__content {
+            gap: calc(var(--website-margin-xlg2) * 2);
+        }
 
         .clock__greeting__text {
             font-size: var(--greeting-font-size-md);
@@ -155,9 +161,11 @@ const StyledClock = styled.div`
 
     // 1024px
     @media only screen and (min-width: 64em) {
-        flex-direction: row;
-        gap: 0;
-        justify-content: space-between;
+        .component__content {
+            flex-direction: row;
+            gap: 0;
+            justify-content: space-between;
+        }
 
         .clock__greeting__text {
             font-size: var(--greeting-font-size-lg);
