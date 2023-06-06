@@ -18,6 +18,7 @@ interface Context {
     quote: Quote;
     isExpanded: boolean;
     toggleInfo: () => void;
+    scrollToSection: (sectionToGo: Element) => void;
 }
 
 interface ClockContextProps {

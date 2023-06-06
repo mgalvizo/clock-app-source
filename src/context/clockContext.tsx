@@ -29,6 +29,7 @@ const initialValue = {
     quote: {},
     isExpanded: false,
     toggleInfo: () => {},
+    scrollToSection: (sectionToGo: Element) => {},
 };
 
 const ClockContext = createContext<Context>(initialValue);
@@ -152,6 +153,27 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
         setIsExpanded(!isExpanded);
     }, [isExpanded]);
 
+    const scrollToSection = useCallback(
+        (sectionToGo: Element) => {
+            let sectionCoords: DOMRect | undefined;
+            let options: ScrollToOptions | undefined;
+
+            if (sectionToGo) {
+                sectionCoords = sectionToGo.getBoundingClientRect();
+                options = {
+                    left: sectionCoords.left + window.pageXOffset,
+                    top: sectionCoords.top + window.pageYOffset,
+                    behavior: 'smooth',
+                };
+            }
+
+            if (isExpanded && sectionCoords) {
+                window.scrollTo(options);
+            }
+        },
+        [isExpanded]
+    );
+
     const contextValue = {
         refreshClock,
         time,
@@ -170,6 +192,7 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
         quote,
         isExpanded,
         toggleInfo,
+        scrollToSection,
     };
 
     return (

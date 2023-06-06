@@ -22,6 +22,8 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
     overflow-x: hidden;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 0 0;
+    background-attachment: fixed;
     animation-name: fadeIn;
     animation-duration: 0.25s;
     animation-timing-function: ease-in-out;

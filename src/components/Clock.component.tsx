@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, useContext, useEffect } from 'react';
 import StyledClock from './styled/Clock.styled';
 import ClockContext from '../context/clockContext';
 import { ReactComponent as SunIcon } from '../assets/desktop/icon-sun.svg';
@@ -19,8 +19,15 @@ const Clock = () => {
         isEvening,
         clockData,
         toggleInfo,
+        scrollToSection,
         isExpanded,
     } = useContext(ClockContext);
+
+    useEffect(() => {
+        const sectionToGo = document.querySelector('.features')!;
+
+        scrollToSection(sectionToGo);
+    }, [scrollToSection]);
 
     const hours = ('0' + time.getHours()).slice(-2);
     const minutes = ('0' + time.getMinutes()).slice(-2);
