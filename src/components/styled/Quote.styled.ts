@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 const StyledQuote = styled.div`
     width: inherit;
-    transform: translateY(
-        calc(var(--website-margin-xlg2) - var(--website-margin-sm))
+    padding-top: calc(var(--website-padding-xlg2) - var(--website-padding-sm));
+    padding-bottom: calc(
+        var(--website-padding-xlg2) - var(--website-padding-sm)
     );
 
     .component__content {
@@ -72,13 +73,17 @@ const StyledQuote = styled.div`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
-        transform: translateY(calc(var(--website-margin-xlg2) * 2));
+        padding-top: calc(var(--website-margin-xlg2) * 2);
+        padding-bottom: calc(var(--website-margin-xlg2) * 2);
     }
 
     // 1024px
     @media only screen and (min-width: 64em) {
-        transform: translateY(
-            calc(var(--website-margin-xlg2) + var(--website-margin-md))
+        padding-top: calc(
+            var(--website-margin-xlg2) + var(--website-margin-md)
+        );
+        padding-bottom: calc(
+            var(--website-margin-xlg2) + var(--website-margin-md)
         );
     }
 `;

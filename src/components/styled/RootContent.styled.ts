@@ -35,8 +35,6 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
         overflow-y: hidden;
     }
 
-    ${({ isExpanded }) => isExpanded && css``}
-
     ${({ isSun }) =>
         isSun &&
         css`
