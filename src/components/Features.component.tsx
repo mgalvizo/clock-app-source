@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import StyledFeatures from './styled/Features.styled';
 import ClockContext from '../context/clockContext';
 import FeatureItem from './FeatureItem.component';
 
 const Features = () => {
-    const { clockData, isSun, isMoon } = useContext(ClockContext);
+    const { clockData, isSun, isMoon, isExpanded } = useContext(ClockContext);
+    const nodeRef = useRef(null);
 
     const { timezone, day_of_year, day_of_week, week_number } = clockData;
 
@@ -41,13 +43,27 @@ const Features = () => {
     });
 
     return (
-        <StyledFeatures isSun={isSun} isMoon={isMoon}>
-            <div className="component">
-                <div className="component__content">
-                    <ul>{features}</ul>
+        <CSSTransition
+            nodeRef={nodeRef}
+            in={isExpanded}
+            timeout={250}
+            classNames="slide-in"
+            mountOnEnter
+            unmountOnExit
+        >
+            <StyledFeatures
+                className="features"
+                ref={nodeRef}
+                isSun={isSun}
+                isMoon={isMoon}
+            >
+                <div className="component">
+                    <div className="component__content">
+                        <ul>{features}</ul>
+                    </div>
                 </div>
-            </div>
-        </StyledFeatures>
+            </StyledFeatures>
+        </CSSTransition>
     );
 };
 

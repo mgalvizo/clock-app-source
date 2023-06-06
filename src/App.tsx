@@ -40,10 +40,6 @@ const App = () => {
         );
     }
 
-    // TODO
-    // implement layout change when expanding: remove quote component, add feature component
-    // implement layout distribution of items
-
     return (
         <>
             <GlobalStyle />

@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 const StyledClock = styled.div`
     width: inherit;
+    margin-top: auto;
+    transform: translateY(calc(var(--website-margin-xlg2) * -1));
+    transition-property: transform, margin;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-in-out;
 
     .component__content {
         display: flex;
@@ -118,6 +123,10 @@ const StyledClock = styled.div`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
+        transform: translateY(
+            calc((var(--website-margin-xlg2) + var(--website-margin-lg)) * -1)
+        );
+
         .component__content {
             gap: calc(var(--website-margin-xlg2) * 2);
         }
@@ -161,6 +170,13 @@ const StyledClock = styled.div`
 
     // 1024px
     @media only screen and (min-width: 64em) {
+        transform: translateY(
+            calc(
+                ((var(--website-margin-xlg2) * 2) + var(--website-margin-md)) *
+                    -1
+            )
+        );
+
         .component__content {
             flex-direction: row;
             gap: 0;

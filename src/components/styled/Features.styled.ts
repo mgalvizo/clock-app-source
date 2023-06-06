@@ -8,6 +8,7 @@ interface StyledFeaturesProps {
 const StyledFeatures = styled.div<StyledFeaturesProps>`
     width: inherit;
     backdrop-filter: blur(20px);
+    transform: translateY(100%);
 
     .component {
         padding-top: calc(
@@ -24,6 +25,36 @@ const StyledFeatures = styled.div<StyledFeaturesProps>`
         grid-template-columns: 1fr;
         grid-template-rows: repeat(4, 1fr);
         row-gap: var(--website-margin-md);
+    }
+
+    &.slide-in-enter {
+        transform: translateY(100%);
+    }
+
+    &.slide-in-enter-active {
+        transform: translateY(0);
+        transition-property: transform;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-in-out;
+    }
+
+    &.slide-in-enter-done {
+        transform: translateY(0);
+    }
+
+    &.slide-in-exit {
+        transform: translateY(0);
+    }
+
+    &.slide-in-exit-active {
+        transform: translateY(100%);
+        transition-property: transform;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-in-out;
+    }
+
+    &.slide-in-exit-done {
+        transform: translateY(100%);
     }
 
     ${({ isSun }) =>
@@ -68,14 +99,23 @@ const StyledFeatures = styled.div<StyledFeaturesProps>`
         }
     }
 
+    // 768px
+    @media only screen and (min-width: 48em) {
+        ul {
+            grid-template-columns: 400px 1fr;
+        }
+    }
+
     // 1024px
     @media only screen and (min-width: 64em) {
         .component {
             padding-top: calc(
-                var(--website-padding-xlg) + var(--website-margin-xlg2)
+                var(--website-padding-xlg) + var(--website-margin-xlg2) +
+                    var(--website-padding-lg)
             );
             padding-bottom: calc(
-                var(--website-padding-xlg) + var(--website-margin-xlg2)
+                var(--website-padding-xlg) + var(--website-margin-xlg2) +
+                    var(--website-padding-lg)
             );
         }
 

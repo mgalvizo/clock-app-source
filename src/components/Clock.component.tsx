@@ -27,8 +27,24 @@ const Clock = () => {
 
     const { abbreviation, city, prov } = clockData;
 
+    let locationContent;
+
+    if (
+        city === 'Throttled! See geocode.xyz/pricing' ||
+        prov === 'Throttled! See geocode.xyz/pricing'
+    ) {
+        locationContent = 'Please try again later.';
+    } else {
+        locationContent = (
+            <>
+                In <span className="clock__location__city">{city}</span>,{' '}
+                <span className="clock__location__country">{prov}</span>
+            </>
+        );
+    }
+
     return (
-        <StyledClock>
+        <StyledClock className="clock">
             <div className="component">
                 <div className="component__content">
                     <div className="clock__container">
@@ -63,16 +79,7 @@ const Clock = () => {
                                 {abbreviation}
                             </span>
                         </p>
-                        <p className="clock__location">
-                            In{' '}
-                            <span className="clock__location__city">
-                                {city}
-                            </span>
-                            ,{' '}
-                            <span className="clock__location__country">
-                                {prov}
-                            </span>
-                        </p>
+                        <p className="clock__location">{locationContent}</p>
                     </div>
                     <div className="button__container">
                         <button type="button" onClick={toggleInfo}>

@@ -7,10 +7,14 @@ export interface RootContentProps {
 }
 
 const RootContent = ({ children }: RootContentProps) => {
-    const { isSun, isMoon } = useContext(ClockContext);
+    const { isSun, isMoon, isExpanded } = useContext(ClockContext);
 
     return (
-        <StyledRootContent isSun={isSun} isMoon={isMoon}>
+        <StyledRootContent
+            isSun={isSun}
+            isMoon={isMoon}
+            isExpanded={isExpanded}
+        >
             {children}
         </StyledRootContent>
     );

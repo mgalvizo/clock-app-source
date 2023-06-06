@@ -9,6 +9,7 @@ import desktopNightimeBg from '../../assets/desktop/bg-image-nighttime.jpg';
 interface StyledRootContentProps {
     isSun: boolean;
     isMoon: boolean;
+    isExpanded: boolean;
 }
 
 const StyledRootContent = styled.main<StyledRootContentProps>`
@@ -19,13 +20,22 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
     align-items: center;
     flex-wrap: wrap;
     overflow-x: hidden;
-    padding-top: var(--website-padding-xlg2);
-    padding-bottom: var(--website-padding-xlg2);
     background-repeat: no-repeat;
     background-size: cover;
     animation-name: fadeIn;
     animation-duration: 0.25s;
     animation-timing-function: ease-in-out;
+
+    .main__content {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: start;
+        position: relative;
+        min-height: inherit;
+        overflow-y: hidden;
+    }
+
+    ${({ isExpanded }) => isExpanded && css``}
 
     ${({ isSun }) =>
         isSun &&
@@ -51,13 +61,6 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
-        padding-top: calc(
-            var(--website-padding-xlg2) + var(--website-padding-lg)
-        );
-        padding-bottom: calc(
-            var(--website-padding-xlg2) + var(--website-padding-lg)
-        );
-
         ${({ isSun }) =>
             isSun &&
             css`
@@ -83,13 +86,6 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
 
     // 1024px
     @media only screen and (min-width: 64em) {
-        padding-top: calc(
-            var(--website-padding-xlg2) + var(--website-padding-md)
-        );
-        padding-bottom: calc(
-            var(--website-padding-xlg2) + var(--website-padding-md)
-        );
-
         ${({ isSun }) =>
             isSun &&
             css`
