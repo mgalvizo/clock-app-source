@@ -40,6 +40,9 @@ const App = () => {
         );
     }
 
+    // TODO
+    // usar minheight para disminuir el salto cuando aparece y desaparecen elementos
+
     return (
         <>
             <GlobalStyle />

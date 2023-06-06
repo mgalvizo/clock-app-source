@@ -35,6 +35,9 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
         position: relative;
         min-height: inherit;
         overflow-y: hidden;
+        padding-top: calc(
+            var(--website-padding-xlg2) - var(--website-padding-sm)
+        );
     }
 
     ${({ isSun }) =>
@@ -61,6 +64,10 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
+        .main__content {
+            padding-top: calc(var(--website-margin-xlg2) * 2);
+        }
+
         ${({ isSun }) =>
             isSun &&
             css`
@@ -86,6 +93,12 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
 
     // 1024px
     @media only screen and (min-width: 64em) {
+        .main__content {
+            padding-top: calc(
+                var(--website-margin-xlg2) + var(--website-margin-md)
+            );
+        }
+
         ${({ isSun }) =>
             isSun &&
             css`

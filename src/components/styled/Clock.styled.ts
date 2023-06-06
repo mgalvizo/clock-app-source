@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const StyledClock = styled.div`
     width: inherit;
     margin-top: auto;
-    padding-top: var(--website-margin-xlg2);
     padding-bottom: var(--website-margin-xlg2);
 
     .component__content {
@@ -121,9 +120,6 @@ const StyledClock = styled.div`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
-        padding-top: calc(
-            var(--website-margin-xlg2) + var(--website-margin-lg)
-        );
         padding-bottom: calc(
             var(--website-margin-xlg2) + var(--website-margin-lg)
         );
@@ -171,9 +167,6 @@ const StyledClock = styled.div`
 
     // 1024px
     @media only screen and (min-width: 64em) {
-        padding-top: calc(
-            var(--website-margin-xlg2) * 2 + var(--website-margin-md)
-        );
         padding-bottom: calc(
             var(--website-margin-xlg2) * 2 + var(--website-margin-md)
         );

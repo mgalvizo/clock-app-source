@@ -2,10 +2,7 @@ import styled from 'styled-components';
 
 const StyledQuote = styled.div`
     width: inherit;
-    padding-top: calc(var(--website-padding-xlg2) - var(--website-padding-sm));
-    padding-bottom: calc(
-        var(--website-padding-xlg2) - var(--website-padding-sm)
-    );
+    min-height: 200px;
 
     .component__content {
         display: grid;
@@ -73,18 +70,21 @@ const StyledQuote = styled.div`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
-        padding-top: calc(var(--website-margin-xlg2) * 2);
-        padding-bottom: calc(var(--website-margin-xlg2) * 2);
+    }
+
+    // 768px
+    @media only screen and (min-width: 48em) {
+        min-height: 180px;
     }
 
     // 1024px
     @media only screen and (min-width: 64em) {
-        padding-top: calc(
-            var(--website-margin-xlg2) + var(--website-margin-md)
-        );
-        padding-bottom: calc(
-            var(--website-margin-xlg2) + var(--website-margin-md)
-        );
+        min-height: 150px;
+    }
+
+    // 1232px
+    @media only screen and (min-width: 77em) {
+        min-height: 125px;
     }
 `;
 

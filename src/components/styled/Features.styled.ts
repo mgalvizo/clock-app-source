@@ -8,7 +8,7 @@ interface StyledFeaturesProps {
 const StyledFeatures = styled.div<StyledFeaturesProps>`
     width: inherit;
     backdrop-filter: blur(20px);
-    transform: translateY(100%);
+    transform: translateY(100%) scaleY(0);
 
     .component {
         padding-top: calc(
@@ -28,33 +28,33 @@ const StyledFeatures = styled.div<StyledFeaturesProps>`
     }
 
     &.slide-in-enter {
-        transform: translateY(100%);
+        transform: translateY(100%) scaleY(0);
     }
 
     &.slide-in-enter-active {
-        transform: translateY(0);
-        transition-property: transform;
+        transform: translateY(0) scaleY(1);
+        transition-property: transform, max-height;
         transition-duration: 0.25s;
         transition-timing-function: ease-in-out;
     }
 
     &.slide-in-enter-done {
-        transform: translateY(0);
+        transform: translateY(0) scaleY(1);
     }
 
     &.slide-in-exit {
-        transform: translateY(0);
+        transform: translateY(0) scaleY(1);
     }
 
     &.slide-in-exit-active {
-        transform: translateY(100%);
+        transform: translateY(100%) scaleY(0);
         transition-property: transform;
         transition-duration: 0.25s;
         transition-timing-function: ease-in-out;
     }
 
     &.slide-in-exit-done {
-        transform: translateY(100%);
+        transform: translateY(100%) scaleY(0);
     }
 
     ${({ isSun }) =>

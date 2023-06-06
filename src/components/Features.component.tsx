@@ -6,7 +6,7 @@ import FeatureItem from './FeatureItem.component';
 
 const Features = () => {
     const { clockData, isSun, isMoon, isExpanded } = useContext(ClockContext);
-    const nodeRef = useRef(null);
+    const nodeRef = useRef<HTMLDivElement>(null);
 
     const { timezone, day_of_year, day_of_week, week_number } = clockData;
 
