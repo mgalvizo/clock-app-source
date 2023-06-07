@@ -61,7 +61,7 @@ Users should be able to:
 
 ### Links
 
--   [Solution URL](https://your-solution-url.com)
+-   [Solution URL](https://www.frontendmentor.io/solutions/clock-app-with-react-typescript-and-styled-components-KF837MoIgs)
 -   [Live Site URL](https://mgalvizo.github.io/clock-app/)
 
 ## My process

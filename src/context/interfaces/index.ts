@@ -25,11 +25,19 @@ interface ClockContextProps {
     children?: ReactNode;
 }
 
+// For geo.xyz (not free)
 interface ReverseGeocodeData {
     city: string;
     prov: string;
 }
 
+// For ipapi (free)
+interface IpApiData {
+    city: string;
+    country: string;
+}
+
+// For worldtimeapi (free)
 interface WorldTimeData {
     abbreviation: string;
     day_of_week: string;
@@ -40,7 +48,7 @@ interface WorldTimeData {
 
 interface ClockData {
     city?: string;
-    prov?: string;
+    country?: string;
     abbreviation?: string;
     day_of_week?: string;
     day_of_year?: string;
@@ -57,6 +65,7 @@ export type {
     Context,
     ClockContextProps,
     ReverseGeocodeData,
+    IpApiData,
     WorldTimeData,
     ClockData,
     Quote,

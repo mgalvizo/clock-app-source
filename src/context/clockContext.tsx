@@ -3,13 +3,14 @@ import axios from 'axios';
 import {
     Context,
     ClockContextProps,
-    ReverseGeocodeData,
+    // ReverseGeocodeData,
+    IpApiData,
     WorldTimeData,
     ClockData,
     Quote,
 } from './interfaces';
-import { Position } from '../interfaces';
-import { geocode, latLng } from '../utils/geolocation';
+// import { Position } from '../interfaces';
+// import { geocode, latLng } from '../utils/geolocation';
 
 const initialValue = {
     refreshClock: () => {},
@@ -63,27 +64,78 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
     isSun = currentHours >= 5 && currentHours < 18;
     isMoon = currentHours >= 18 || currentHours < 5;
 
+    // This implements navigator.geolocation in browser which needs the user to allow location
+    //  and geo.xyz which is not free
+    // const fetchPositionAndTimeData = useCallback(async () => {
+    //     try {
+    //         const position = await geocode();
+
+    //         if (!position) {
+    //             throw new Error('Unable to retrieve your position.');
+    //         }
+
+    //         const coords = latLng(position as Position);
+    //         const [latitude, longitude] = coords;
+
+    //         const reverseGeocodeResponse = await axios.get(
+    //             `https://geocode.xyz/${latitude},${longitude}?geoit=json`
+    //         );
+
+    //         if (reverseGeocodeResponse.status !== 200) {
+    //             throw new Error('Unable to retrieve geocoding data.');
+    //         }
+
+    //         const { city, prov } =
+    //             reverseGeocodeResponse.data as ReverseGeocodeData;
+
+    //         const worldTimeResponse = await axios.get(
+    //             'http://worldtimeapi.org/api/ip'
+    //         );
+
+    //         if (worldTimeResponse.status !== 200) {
+    //             throw new Error('Unable to retrieve time data.');
+    //         }
+
+    //         const {
+    //             abbreviation,
+    //             day_of_week,
+    //             day_of_year,
+    //             timezone,
+    //             week_number,
+    //         } = worldTimeResponse.data as WorldTimeData;
+
+    //         setClockData((prevClockData: ClockData) => {
+    //             return {
+    //                 ...prevClockData,
+    //                 city,
+    //                 prov,
+    //                 abbreviation,
+    //                 day_of_week,
+    //                 day_of_year,
+    //                 timezone,
+    //                 week_number,
+    //             };
+    //         });
+
+    //         setIsLoading(false);
+    //     } catch (error) {
+    //         setIsLoading(false);
+    //         if (error instanceof Error) {
+    //             setError(error.message);
+    //         }
+    //         return;
+    //     }
+    // }, []);
+
     const fetchPositionAndTimeData = useCallback(async () => {
         try {
-            const position = await geocode();
+            const ipApiResponse = await axios.get('https://ipapi.co/json/');
 
-            if (!position) {
-                throw new Error('Unable to retrieve your position.');
+            if (ipApiResponse.status !== 200) {
+                throw new Error('Unable to retrieve location data.');
             }
 
-            const coords = latLng(position as Position);
-            const [latitude, longitude] = coords;
-
-            const reverseGeocodeResponse = await axios.get(
-                `https://geocode.xyz/${latitude},${longitude}?geoit=json`
-            );
-
-            if (reverseGeocodeResponse.status !== 200) {
-                throw new Error('Unable to retrieve geocoding data.');
-            }
-
-            const { city, prov } =
-                reverseGeocodeResponse.data as ReverseGeocodeData;
+            const { city, country } = ipApiResponse.data as IpApiData;
 
             const worldTimeResponse = await axios.get(
                 'http://worldtimeapi.org/api/ip'
@@ -105,7 +157,7 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
                 return {
                     ...prevClockData,
                     city,
-                    prov,
+                    country,
                     abbreviation,
                     day_of_week,
                     day_of_year,

@@ -32,20 +32,20 @@ const Clock = () => {
     const hours = ('0' + time.getHours()).slice(-2);
     const minutes = ('0' + time.getMinutes()).slice(-2);
 
-    const { abbreviation, city, prov } = clockData;
+    const { abbreviation, city, country } = clockData;
 
     let locationContent;
 
     if (
         city === 'Throttled! See geocode.xyz/pricing' ||
-        prov === 'Throttled! See geocode.xyz/pricing'
+        country === 'Throttled! See geocode.xyz/pricing'
     ) {
         locationContent = 'Please try again later.';
     } else {
         locationContent = (
             <>
                 In <span className="clock__location__city">{city}</span>,{' '}
-                <span className="clock__location__country">{prov}</span>
+                <span className="clock__location__country">{country}</span>
             </>
         );
     }
