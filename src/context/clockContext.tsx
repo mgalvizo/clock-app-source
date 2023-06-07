@@ -138,7 +138,7 @@ const ClockContextProvider = ({ children }: ClockContextProps) => {
             const { city, country } = ipApiResponse.data as IpApiData;
 
             const worldTimeResponse = await axios.get(
-                'http://worldtimeapi.org/api/ip'
+                'https://worldtimeapi.org/api/ip'
             );
 
             if (worldTimeResponse.status !== 200) {
