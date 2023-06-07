@@ -34,21 +34,21 @@ const Clock = () => {
 
     const { abbreviation, city, country } = clockData;
 
-    let locationContent;
-
-    if (
-        city === 'Throttled! See geocode.xyz/pricing' ||
-        country === 'Throttled! See geocode.xyz/pricing'
-    ) {
-        locationContent = 'Please try again later.';
-    } else {
-        locationContent = (
-            <>
-                In <span className="clock__location__city">{city}</span>,{' '}
-                <span className="clock__location__country">{country}</span>
-            </>
-        );
-    }
+    // This code is for implementation with geocode.xyz and navigator.geolocation
+    // let locationContent;
+    // if (
+    //     city === 'Throttled! See geocode.xyz/pricing' ||
+    //     country === 'Throttled! See geocode.xyz/pricing'
+    // ) {
+    //     locationContent = 'Please try again later.';
+    // } else {
+    //     locationContent = (
+    //         <>
+    //             In <span className="clock__location__city">{city}</span>,{' '}
+    //             <span className="clock__location__country">{country}</span>
+    //         </>
+    //     );
+    // }
 
     return (
         <StyledClock className="clock">
@@ -86,7 +86,17 @@ const Clock = () => {
                                 {abbreviation}
                             </span>
                         </p>
-                        <p className="clock__location">{locationContent}</p>
+                        <p className="clock__location">
+                            {/* {locationContent} */}
+                            In{' '}
+                            <span className="clock__location__city">
+                                {city}
+                            </span>
+                            ,{' '}
+                            <span className="clock__location__country">
+                                {country}
+                            </span>
+                        </p>
                     </div>
                     <div className="button__container">
                         <button type="button" onClick={toggleInfo}>
