@@ -32,4 +32,6 @@ const StyledSpinner = styled.div<SpinnerProps>`
         `}
 `;
 
-export default StyledSpinner;
+const StyledSpinnerContent = styled.div``;
+
+export { StyledSpinner, StyledSpinnerContent };

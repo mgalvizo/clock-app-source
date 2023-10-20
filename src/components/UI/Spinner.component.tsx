@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import StyledSpinner from '../styled/Spinner.styled';
+import { StyledSpinner, StyledSpinnerContent } from '../styled/Spinner.styled';
 
 export interface SpinnerProps {
     children?: ReactNode;
@@ -10,7 +10,7 @@ export interface SpinnerProps {
 const Spinner = ({ size, borderWidth }: SpinnerProps) => {
     return (
         <StyledSpinner size={size} borderWidth={borderWidth}>
-            <div className="spinner"></div>
+            <StyledSpinnerContent></StyledSpinnerContent>
         </StyledSpinner>
     );
 };

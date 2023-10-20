@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import StyledEAppError from './styled/AppError.styled';
+import { Component, ComponentContent } from './styled/Component.styled';
 
 interface AppErrorProps {
     children?: ReactNode;
@@ -9,11 +10,11 @@ interface AppErrorProps {
 const AppError = ({ message }: AppErrorProps) => {
     return (
         <StyledEAppError>
-            <div className="component">
-                <div className="component__content">
+            <Component>
+                <ComponentContent>
                     <h2>&#9888; {message} &#9785;</h2>
-                </div>
-            </div>
+                </ComponentContent>
+            </Component>
         </StyledEAppError>
     );
 };

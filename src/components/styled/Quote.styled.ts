@@ -1,25 +1,9 @@
 import styled from 'styled-components';
+import { ComponentContent } from './Component.styled';
 
 const StyledQuote = styled.div`
     width: inherit;
     min-height: 200px;
-
-    .component__content {
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: auto auto;
-        justify-content: start;
-        align-items: start;
-        gap: var(--website-margin-md);
-    }
-
-    .quote__content {
-        margin-bottom: var(--website-margin-sm);
-    }
-
-    .quote__author {
-        font-weight: bold;
-    }
 
     svg {
         fill: var(--white);
@@ -88,4 +72,26 @@ const StyledQuote = styled.div`
     }
 `;
 
-export default StyledQuote;
+const StyledQuoteComponentContent = styled(ComponentContent)`
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: start;
+    gap: var(--website-margin-md);
+`;
+
+const StyledQuoteContent = styled.div`
+    margin-bottom: var(--website-margin-sm);
+`;
+
+const StyledQuoteAuthor = styled.p`
+    font-weight: bold;
+`;
+
+export {
+    StyledQuote,
+    StyledQuoteComponentContent,
+    StyledQuoteContent,
+    StyledQuoteAuthor,
+};
