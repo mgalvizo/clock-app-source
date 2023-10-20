@@ -1,13 +1,28 @@
-import React, { ReactNode, useContext, useEffect } from 'react';
-import StyledClock from './styled/Clock.styled';
+import React, { useContext, useEffect } from 'react';
+import {
+    StyledClock,
+    StyledClockContent,
+    StyledClockContainer,
+    StyledClockGreeting,
+    StyledClockGreetingIcon,
+    StyledClockGreetingText,
+    StyledClockTime,
+    StyledClockTimeHours,
+    StyledClockTimeColon,
+    StyledClockTimeMinutes,
+    StyledClockTimeTimezone,
+    StyledClockLocation,
+    StyledClockLocationCity,
+    StyledClockLocationCountry,
+    StyledClockButtonContainer,
+    StyledClockButtonText,
+    StyledClockButtonArrow,
+} from './styled/Clock.styled';
 import ClockContext from '../context/clockContext';
 import { ReactComponent as SunIcon } from '../assets/desktop/icon-sun.svg';
 import { ReactComponent as MoonIcon } from '../assets/desktop/icon-moon.svg';
 import { ReactComponent as ArrowDownIcon } from '../assets/desktop/icon-arrow-down.svg';
-
-interface ClockProps {
-    children?: ReactNode;
-}
+import { Component } from './styled/Component.styled';
 
 const Clock = () => {
     const {
@@ -51,16 +66,16 @@ const Clock = () => {
     // }
 
     return (
-        <StyledClock className="clock">
-            <div className="component">
-                <div className="component__content">
-                    <div className="clock__container">
-                        <p className="clock__greeting">
-                            <span className="clock__greeting__icon">
+        <StyledClock id="clock">
+            <Component>
+                <StyledClockContent>
+                    <StyledClockContainer>
+                        <StyledClockGreeting>
+                            <StyledClockGreetingIcon>
                                 {isSun && <SunIcon />}
                                 {isMoon && <MoonIcon />}
-                            </span>
-                            <span className="clock__greeting__text">
+                            </StyledClockGreetingIcon>
+                            <StyledClockGreetingText>
                                 Good{' '}
                                 {isMorning
                                     ? 'morning'
@@ -70,52 +85,50 @@ const Clock = () => {
                                     ? 'evening'
                                     : ''}
                                 <span>, it's currently</span>
-                            </span>
-                        </p>
-                        <p className="clock__time">
+                            </StyledClockGreetingText>
+                        </StyledClockGreeting>
+                        <StyledClockTime>
                             <span>
-                                <span className="clock__time__hours">
+                                <StyledClockTimeHours>
                                     {hours}
-                                </span>
-                                <span className="clock__time__colon">:</span>
-                                <span className="clock__time__minutes">
+                                </StyledClockTimeHours>
+                                <StyledClockTimeColon>:</StyledClockTimeColon>
+                                <StyledClockTimeMinutes>
                                     {minutes}
-                                </span>
+                                </StyledClockTimeMinutes>
                             </span>
-                            <span className="clock__time__timezone">
+                            <StyledClockTimeTimezone>
                                 {abbreviation}
-                            </span>
-                        </p>
-                        <p className="clock__location">
+                            </StyledClockTimeTimezone>
+                        </StyledClockTime>
+                        <StyledClockLocation>
                             {/* {locationContent} */}
                             In{' '}
-                            <span className="clock__location__city">
+                            <StyledClockLocationCity>
                                 {city}
-                            </span>
+                            </StyledClockLocationCity>
                             ,{' '}
-                            <span className="clock__location__country">
+                            <StyledClockLocationCountry>
                                 {country}
-                            </span>
-                        </p>
-                    </div>
-                    <div className="button__container">
+                            </StyledClockLocationCountry>
+                        </StyledClockLocation>
+                    </StyledClockContainer>
+                    <StyledClockButtonContainer>
                         <button type="button" onClick={toggleInfo}>
                             <div>
-                                <span className="button__text">
+                                <StyledClockButtonText>
                                     {isExpanded ? 'Less' : 'More'}
-                                </span>
-                                <span
-                                    className={`button__arrow ${
-                                        isExpanded ? 'expanded' : ''
-                                    }`}
+                                </StyledClockButtonText>
+                                <StyledClockButtonArrow
+                                    className={isExpanded ? 'expanded' : ''}
                                 >
                                     <ArrowDownIcon />
-                                </span>
+                                </StyledClockButtonArrow>
                             </div>
                         </button>
-                    </div>
-                </div>
-            </div>
+                    </StyledClockButtonContainer>
+                </StyledClockContent>
+            </Component>
         </StyledClock>
     );
 };
