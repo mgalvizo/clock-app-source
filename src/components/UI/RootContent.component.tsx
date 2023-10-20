@@ -1,5 +1,5 @@
 import React, { ReactNode, useContext } from 'react';
-import StyledRootContent from '../styled/RootContent.styled';
+import { StyledRootContent } from '../styled/RootContent.styled';
 import ClockContext from '../../context/clockContext';
 
 export interface RootContentProps {

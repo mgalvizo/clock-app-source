@@ -7,6 +7,8 @@ import Quote from './components/Quote.component';
 import Clock from './components/Clock.component';
 import Features from './components/Features.component';
 import AppError from './components/AppError.component';
+import { VisuallyHidden } from './components/styled/Component.styled';
+import { StyledRootMainContent } from './components/styled/RootContent.styled';
 
 const App = () => {
     const { fetchPositionAndTimeData, isLoading, error, refreshClock } =
@@ -32,11 +34,11 @@ const App = () => {
         content = <AppError message={error} />;
     } else {
         content = (
-            <div className="main__content">
+            <StyledRootMainContent>
                 <Quote />
                 <Clock />
                 <Features />
-            </div>
+            </StyledRootMainContent>
         );
     }
 
@@ -44,7 +46,9 @@ const App = () => {
         <>
             <GlobalStyle />
             <RootContent>
-                <h1 className="visually-hidden">Clock App</h1>
+                <h1>
+                    <VisuallyHidden>Clock App</VisuallyHidden>
+                </h1>
                 {content}
             </RootContent>
         </>

@@ -5,6 +5,7 @@ import tabletDaytimeBg from '../../assets/tablet/bg-image-daytime.jpg';
 import tabletNightimeBg from '../../assets/tablet/bg-image-nighttime.jpg';
 import desktopDaytimebg from '../../assets/desktop/bg-image-daytime.jpg';
 import desktopNightimeBg from '../../assets/desktop/bg-image-nighttime.jpg';
+import { MainContent } from './Component.styled';
 
 interface StyledRootContentProps {
     isSun: boolean;
@@ -27,18 +28,6 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
     animation-name: fadeIn;
     animation-duration: 0.25s;
     animation-timing-function: ease-in-out;
-
-    .main__content {
-        display: flex;
-        flex-flow: column wrap;
-        justify-content: start;
-        position: relative;
-        min-height: inherit;
-        overflow-y: hidden;
-        padding-top: calc(
-            var(--website-padding-xlg2) - var(--website-padding-sm)
-        );
-    }
 
     ${({ isSun }) =>
         isSun &&
@@ -64,10 +53,6 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
-        .main__content {
-            padding-top: calc(var(--website-margin-xlg2) * 2);
-        }
-
         ${({ isSun }) =>
             isSun &&
             css`
@@ -93,12 +78,6 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
 
     // 1024px
     @media only screen and (min-width: 64em) {
-        .main__content {
-            padding-top: calc(
-                var(--website-margin-xlg2) + var(--website-margin-md)
-            );
-        }
-
         ${({ isSun }) =>
             isSun &&
             css`
@@ -123,4 +102,26 @@ const StyledRootContent = styled.main<StyledRootContentProps>`
     }
 `;
 
-export default StyledRootContent;
+const StyledRootMainContent = styled(MainContent)`
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: start;
+    position: relative;
+    min-height: inherit;
+    overflow-y: hidden;
+    padding-top: calc(var(--website-padding-xlg2) - var(--website-padding-sm));
+
+    // 620px
+    @media only screen and (min-width: 38.75em) {
+        padding-top: calc(var(--website-margin-xlg2) * 2);
+    }
+
+    // 1024px
+    @media only screen and (min-width: 64em) {
+        padding-top: calc(
+            var(--website-margin-xlg2) + var(--website-margin-md)
+        );
+    }
+`;
+
+export { StyledRootContent, StyledRootMainContent };
