@@ -1,6 +1,10 @@
 import React, { useContext, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import StyledFeatures from './styled/Features.styled';
+import {
+    StyledFeatures,
+    StyledFeaturesComponent,
+    StyledFeaturesComponentContent,
+} from './styled/Features.styled';
 import ClockContext from '../context/clockContext';
 import FeatureItem from './FeatureItem.component';
 
@@ -57,11 +61,11 @@ const Features = () => {
                 isSun={isSun}
                 isMoon={isMoon}
             >
-                <div className="component">
-                    <div className="component__content">
+                <StyledFeaturesComponent>
+                    <StyledFeaturesComponentContent>
                         <ul>{features}</ul>
-                    </div>
-                </div>
+                    </StyledFeaturesComponentContent>
+                </StyledFeaturesComponent>
             </StyledFeatures>
         </CSSTransition>
     );

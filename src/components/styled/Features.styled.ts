@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Component, ComponentContent } from './Component.styled';
 
 interface StyledFeaturesProps {
     isSun: boolean;
@@ -9,15 +10,6 @@ const StyledFeatures = styled.div<StyledFeaturesProps>`
     width: inherit;
     backdrop-filter: blur(20px);
     transform: translateY(100%) scaleY(0);
-
-    .component {
-        padding-top: calc(
-            var(--website-padding-sm) + var(--website-padding-xlg2)
-        );
-        padding-bottom: calc(
-            var(--website-padding-sm) + var(--website-padding-xlg2)
-        );
-    }
 
     ul {
         list-style-type: none;
@@ -81,11 +73,6 @@ const StyledFeatures = styled.div<StyledFeaturesProps>`
 
     // 620px
     @media only screen and (min-width: 38.75em) {
-        .component {
-            padding-top: calc(var(--website-padding-xlg2) * 3);
-            padding-bottom: calc(var(--website-padding-xlg2) * 3);
-        }
-
         ul {
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(2, 1fr);
@@ -108,17 +95,6 @@ const StyledFeatures = styled.div<StyledFeaturesProps>`
 
     // 1024px
     @media only screen and (min-width: 64em) {
-        .component {
-            padding-top: calc(
-                var(--website-padding-xlg) + var(--website-margin-xlg2) +
-                    var(--website-padding-lg)
-            );
-            padding-bottom: calc(
-                var(--website-padding-xlg) + var(--website-margin-xlg2) +
-                    var(--website-padding-lg)
-            );
-        }
-
         ul {
             position: relative;
             grid-template-columns: 570px 1fr;
@@ -159,4 +135,35 @@ const StyledFeatures = styled.div<StyledFeaturesProps>`
     }
 `;
 
-export default StyledFeatures;
+const StyledFeaturesComponent = styled(Component)`
+    padding-top: calc(var(--website-padding-sm) + var(--website-padding-xlg2));
+    padding-bottom: calc(
+        var(--website-padding-sm) + var(--website-padding-xlg2)
+    );
+
+    // 620px
+    @media only screen and (min-width: 38.75em) {
+        padding-top: calc(var(--website-padding-xlg2) * 3);
+        padding-bottom: calc(var(--website-padding-xlg2) * 3);
+    }
+
+    // 1024px
+    @media only screen and (min-width: 64em) {
+        padding-top: calc(
+            var(--website-padding-xlg) + var(--website-margin-xlg2) +
+                var(--website-padding-lg)
+        );
+        padding-bottom: calc(
+            var(--website-padding-xlg) + var(--website-margin-xlg2) +
+                var(--website-padding-lg)
+        );
+    }
+`;
+
+const StyledFeaturesComponentContent = styled(ComponentContent)``;
+
+export {
+    StyledFeatures,
+    StyledFeaturesComponent,
+    StyledFeaturesComponentContent,
+};
