@@ -61,7 +61,7 @@ const Features = () => {
                 isSun={isSun}
                 isMoon={isMoon}
             >
-                <StyledFeaturesComponent>
+                <StyledFeaturesComponent id="features">
                     <StyledFeaturesComponentContent>
                         <ul>{features}</ul>
                     </StyledFeaturesComponentContent>
