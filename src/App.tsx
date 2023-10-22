@@ -7,7 +7,6 @@ import Quote from './components/Quote.component';
 import Clock from './components/Clock.component';
 import Features from './components/Features.component';
 import AppError from './components/AppError.component';
-import { VisuallyHidden } from './components/styled/Component.styled';
 import { StyledRootMainContent } from './components/styled/RootContent.styled';
 
 const App = () => {
@@ -46,9 +45,7 @@ const App = () => {
         <>
             <GlobalStyle />
             <RootContent>
-                <h1>
-                    <VisuallyHidden>Clock App</VisuallyHidden>
-                </h1>
+                <h1 className="visually-hidden">Clock App</h1>
                 {content}
             </RootContent>
         </>
